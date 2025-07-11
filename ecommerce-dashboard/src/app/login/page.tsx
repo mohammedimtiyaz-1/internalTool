@@ -9,8 +9,9 @@ export default function LoginPage() {
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    // Set cookie (mock)
-    document.cookie = `auth_token=mocktoken; path=/`;
+    // Set cookie with 2-minute expiry
+    const expires = new Date(Date.now() + 2 * 60 * 1000).toUTCString();
+    document.cookie = `auth_token=mocktoken; path=/; expires=${expires}`;
     router.push("/dashboard");
   }
 

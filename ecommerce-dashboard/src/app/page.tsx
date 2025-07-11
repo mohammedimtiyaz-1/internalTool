@@ -1,21 +1,19 @@
-import { getUserFromToken } from "@/lib/auth";
-import Revenue from "./components/Revenue";
-import ProductList from "./components/ProductList";
-import SaleChartWrapper from "./components/SaleChartWrapper";
+import Link from "next/link";
 
-export default async function DashboardPage() {
-  const user = await getUserFromToken();
-
+export default function HomePage() {
   return (
-    <main className="min-h-screen bg-gray-50 p-8">
-      <div className="max-w-4xl mx-auto space-y-8">
-        <h1 className="text-2xl font-bold">Welcome, {user?.name ?? "User"}</h1>
-        <Revenue />
-        <ProductList />
-        <div>
-          <h2 className="text-lg font-semibold mb-2">Sales (Last 7 Days)</h2>
-          <SaleChartWrapper />
-        </div>
+    <main className="min-h-screen flex items-center justify-center bg-gray-50">
+      <div className="bg-white p-8 rounded shadow-md text-center space-y-6">
+        <h1 className="text-3xl font-bold">E-Commerce Admin Dashboard</h1>
+        <p className="text-gray-600">
+          Welcome! Use the button below to access your dashboard.
+        </p>
+        <Link
+          href="/dashboard"
+          className="inline-block bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700 transition"
+        >
+          Go to Dashboard
+        </Link>
       </div>
     </main>
   );
